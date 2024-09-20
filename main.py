@@ -1,6 +1,6 @@
 def main():
-    with open("/home/johaleia/workspace/github.com/Alex-Hardin/bookbot/books/frankenstein.txt") as f:
-        read_contents = f.read()
+        with open("/home/johaleia/workspace/github.com/Alex-Hardin/bookbot/books/frankenstein.txt") as f: 
+            read_contents = f.read()
         print(read_contents)
 
 def word_count():
@@ -16,4 +16,21 @@ def word_count():
             words += len(words_split)
     print(words)
 
-word_count()
+def character_count():
+    characters_counted = {}
+    # Grab frankenstein.txt with path and call it frankenstein
+    with open("/home/johaleia/workspace/github.com/Alex-Hardin/bookbot/books/frankenstein.txt", "r") as frankenstein:
+        content = frankenstein.read()
+        # You cant .lower() a txt file so we used content = frankenstein.read() to get around that
+        frank_lower = content.lower()
+        for word in frank_lower:
+            for char in word:
+                if char in characters_counted:
+                    characters_counted[char] += 1
+                else:
+                    characters_counted[char] = 1
+    print(characters_counted)
+
+character_count()
+
+
