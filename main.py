@@ -14,14 +14,14 @@ def word_count():
             words_split = word.split()
             # Add the number of words to the counter above.
             words += len(words_split)
-    print(words)
+    return(words)
 
 def character_count():
     characters_counted = {}
     # Grab frankenstein.txt with path and call it frankenstein
     with open("/home/johaleia/workspace/github.com/Alex-Hardin/bookbot/books/frankenstein.txt", "r") as frankenstein:
         content = frankenstein.read()
-        # You cant .lower() a txt file so we used content = frankenstein.read() to get around that
+        # You cant .lower() a txt file so I used content = frankenstein.read() to get around that
         frank_lower = content.lower()
         for word in frank_lower:
             for char in word:
@@ -29,7 +29,15 @@ def character_count():
                     characters_counted[char] += 1
                 else:
                     characters_counted[char] = 1
-    print(characters_counted)
+    letters_only = {char: count for char, count in characters_counted.items() if ('a' <= char <= 'z')}
+    return(letters_only)
+
+def dict_sort(dict):
+    return dict["num"]
+
+
+def print_report():
+    print(f"--- Begin report of books/frankenstein.txt --- \n{word_count()} words found in the document")
 
 character_count()
 
