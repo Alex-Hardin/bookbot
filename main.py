@@ -29,20 +29,20 @@ def character_count():
     # Had to AI this for help. Will come back to update in a form that makes more sense to me at a later date. 
     letters_only = {char: count for char, count in characters_counted.items() if ('a' <= char <= 'z')}
     # making dictionary into list so I can sort
-    letters_list = [{"char": char, "num": count} for char, count in letters_only.items()]
+    letters_list = [{"char": char, "count": count} for char, count in letters_only.items()]
     # sort with reverse=TRUE so top number is the large number. key = dict_sort which is my function below returning the num value
     letters_list.sort(reverse=True, key=dict_sort)
     return letters_list
 
 def dict_sort(dict):
-    return dict["num"]
+    return dict["count"]
 
 def print_report():
     # pull in character_count function
     new_list = character_count()
     print(f"--- Begin report of books/frankenstein.txt --- \n{word_count()} words found in the document")
     for item in new_list:
-        print(f"The '{item['char']}' character was found {item['num']} times")
+        print(f"The '{item['char']}' character was found {item['count']} times")
     print("--- End report ---")
 
 print_report()
